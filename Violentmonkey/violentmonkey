@@ -1,0 +1,321 @@
+{
+  "scripts": {
+    "reserve_from_checklist-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 0
+      },
+      "position": 1,
+      "lastModified": 1702993732801,
+      "lastUpdated": 1702993732801
+    },
+    "wait_queue-reserve-q.tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 0
+      },
+      "position": 2,
+      "lastModified": 1702993186161,
+      "lastUpdated": 1702993186161
+    },
+    "fo_retry-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 0
+      },
+      "position": 3,
+      "lastModified": 1702993759064,
+      "lastUpdated": 1702993759064
+    },
+    "agree-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 4,
+      "lastModified": 1702993205244,
+      "lastUpdated": 1702993205244
+    },
+    "roominfo-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 5,
+      "lastModified": 1702993264821,
+      "lastUpdated": 1702993264821
+    },
+    "purchase_entry-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 6,
+      "lastModified": 1702993282851,
+      "lastUpdated": 1702993282851
+    },
+    "login-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 7,
+      "lastModified": 1702993299816,
+      "lastUpdated": 1702993299816
+    },
+    "aniversary_select-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 8,
+      "lastModified": 1702993769210,
+      "lastUpdated": 1702993769210
+    },
+    "aniversary_select_change-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 9,
+      "lastModified": 1702993775186,
+      "lastUpdated": 1702993775186
+    },
+    "input_search_key- eki-net.com": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 0,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 10,
+      "lastModified": 1702993527904,
+      "lastUpdated": 1702993527904
+    },
+    "routelist_click-eki-net.com": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 11,
+      "lastModified": 1702993543248,
+      "lastUpdated": 1702993543248
+    },
+    "restaurant_check-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 12,
+      "lastModified": 1702993780359,
+      "lastUpdated": 1702993780359
+    },
+    "autologin-eki-net.com": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 13,
+      "lastModified": 1702993788760,
+      "lastUpdated": 1702993788760
+    },
+    "check_showrestaurant-tokyodisneyresort.jp-sp-showrestaurant-check-": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 14,
+      "lastModified": 1702993832823,
+      "lastUpdated": 1702993832823
+    },
+    "overflow-tokyodisneyresort.jp": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "removed": 0,
+        "shouldUpdate": 1
+      },
+      "position": 15,
+      "lastModified": 1702993700164,
+      "lastUpdated": 1702993700164
+    }
+  },
+  "settings": {
+    "isApplied": true,
+    "autoUpdate": 1,
+    "updateEnabledScriptsOnly": true,
+    "lastUpdate": 1702978691961,
+    "lastModified": 1702993799879,
+    "showBadge": "unique",
+    "badgeColor": "#880088",
+    "badgeColorBlocked": "#888888",
+    "exportValues": false,
+    "exportNameTemplate": "[violentmonkey]_YYYY-MM-DD_HH.mm.ss",
+    "expose": {
+      "greasyfork%2Eorg": true,
+      "sleazyfork%2Eorg": false
+    },
+    "closeAfterInstall": false,
+    "editAfterInstall": false,
+    "helpForLocalFile": true,
+    "trackLocalFile": false,
+    "autoReload": false,
+    "autoReloadTracked": false,
+    "features": null,
+    "blacklist": null,
+    "syncScriptStatus": true,
+    "customCSS": "",
+    "importScriptData": true,
+    "importSettings": true,
+    "notifyUpdates": false,
+    "notifyUpdatesGlobal": false,
+    "version": 1,
+    "defaultInjectInto": "auto",
+    "ffInject": true,
+    "xhrInject": false,
+    "filters": {
+      "searchScope": "name",
+      "showOrder": false,
+      "sort": "exec",
+      "viewSingleColumn": true,
+      "viewTable": true
+    },
+    "filtersPopup": {
+      "sort": "exec",
+      "enabledFirst": false,
+      "groupRunAt": true,
+      "hideDisabled": ""
+    },
+    "editor": {
+      "lineWrapping": false,
+      "indentWithTabs": false,
+      "indentUnit": 2,
+      "tabSize": 2,
+      "undoDepth": 500
+    },
+    "editorTheme": "",
+    "editorThemeName": null,
+    "editorWindow": false,
+    "editorWindowPos": {},
+    "editorWindowSimple": true,
+    "scriptTemplate": "// ==UserScript==\n// @name        New script {{name}}\n// @namespace   Violentmonkey Scripts\n// @match       {{url}}\n// @grant       none\n// @version     1.0\n// @author      -\n// @description {{date}}\n// ==/UserScript==\n",
+    "showAdvanced": true,
+    "uiTheme": ""
+  }
+}
