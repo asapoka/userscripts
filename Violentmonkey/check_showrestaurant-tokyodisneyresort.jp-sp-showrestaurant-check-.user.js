@@ -2,7 +2,7 @@
 // @name        check_showrestaurant-tokyodisneyresort.jp/sp/showrestaurant/check/
 // @namespace   Violentmonkey Scripts
 // @match       https://reserve.tokyodisneyresort.jp/sp/showrestaurant/check/
-// @grant       none
+// @grant       GM_notification
 // @version     1.0
 // @author      -
 // @description 2023/9/7 8:44:36
@@ -24,6 +24,11 @@ function checkSheet(element) {
       if ($(tr).find("a").length != 0) {
         $(tr).find("a:visible:first").click();
         console.log("click");
+        var notificationOptions = {
+          title: "空きが見つかりました！",
+          text: "確認してください",
+        };
+        GM_notification(notificationOptions);
         wait_reload(1000 * 120);
       }
     });
