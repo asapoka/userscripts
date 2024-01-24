@@ -2,12 +2,31 @@
 // @name        check_showrestaurant-tokyodisneyresort.jp/sp/showrestaurant/check/
 // @namespace   Violentmonkey Scripts
 // @match       https://reserve.tokyodisneyresort.jp/sp/showrestaurant/check/
-// @grant       GM_notification
+// @grant       GM.xmlHttpRequest
 // @version     1.0
 // @author      -
 // @description 2023/9/7 8:44:36
 // ==/UserScript==
 
+const params = new URLSearchParams({
+  message: "レストランの空きを掴みました！",
+});
+
+function lineNotification() {
+  console.log("notification!");
+  GM.xmlHttpRequest({
+    method: "POST",
+    url: "https://notify-api.line.me/api/notify",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: "Bearer {Your TOKEN}",
+    },
+    data: params.toString(),
+    onload: function (response) {
+      console.log(response.responseText);
+    },
+  });
+}
 function checkSheet(element) {
   fullNum = ($(element).find("td.state").text().match(/満席/g) || []).length;
   sheetNum = $(element).find("tr").length;
@@ -22,13 +41,13 @@ function checkSheet(element) {
     .each(function (index, tr) {
       console.log(" " + $(tr).find("th").text().trim() + " " + $(tr).find("td.state").text().trim());
       if ($(tr).find("a").length != 0) {
-        $(tr).find("a:visible:first").click();
-        console.log("click");
         var notificationOptions = {
           title: "空きが見つかりました！",
           text: "確認してください",
         };
-        GM_notification(notificationOptions);
+        lineNotification();
+        $(tr).find("a:visible:first").click();
+        console.log("click");
         wait_reload(1000 * 120);
       }
     });
