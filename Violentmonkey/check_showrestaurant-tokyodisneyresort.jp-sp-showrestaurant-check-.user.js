@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 const params = new URLSearchParams({
-  message: "レストランの空きを掴みました！",
+  message: "ショーレストランの空きを掴みました！",
 });
 
 function lineNotification() {
@@ -19,7 +19,7 @@ function lineNotification() {
     url: "https://notify-api.line.me/api/notify",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer {Your TOKEN}",
+      Authorization: "Bearer ${YOUR TOKEN}",
     },
     data: params.toString(),
     onload: function (response) {
@@ -41,10 +41,6 @@ function checkSheet(element) {
     .each(function (index, tr) {
       console.log(" " + $(tr).find("th").text().trim() + " " + $(tr).find("td.state").text().trim());
       if ($(tr).find("a").length != 0) {
-        var notificationOptions = {
-          title: "空きが見つかりました！",
-          text: "確認してください",
-        };
         lineNotification();
         $(tr).find("a:visible:first").click();
         console.log("click");
@@ -61,22 +57,14 @@ function wait_reload(t) {
   }, t);
 }
 
-const f1 = async function () {
+const f1 = async function (rank) {
   $("section").each(function (index, section) {
     sheet = $(section).find("div.sheet").text();
 
-    if (sheet.includes("S")) {
+    if (sheet.includes(rank)) {
       //S席
-      console.log("S sheet");
+      console.log(rank + " sheet");
       checkSheet($(section));
-    } else if (sheet.includes("A")) {
-      //A席
-      console.log("A sheet");
-      //checkSheet($(section));
-    } else if (sheet.includes("B")) {
-      //B席
-      console.log("B sheet");
-      //checkSheet($(section));
     }
   });
 };
@@ -93,22 +81,11 @@ const wait_loading = async function () {
   t = setInterval(function () {
     if ($(".ui-mobile" + ".ui-loading").length == 0) {
       console.log("ui load complete");
-
-      if ($(".loading:nth-child(1):visible").length == 0) {
-        //S席
-        console.log("S sheet section loading complete");
+      if ($(".loading:nth-child(1):visible").length == 0 && $(".loading:nth-child(2):visible").length == 0 && $(".loading:nth-child(3):visible").length == 0) {
+        console.log("sheet section loading complete");
         clearInterval(t);
-        f1();
-      } else if ($(".loading:nth-child(2):visible").length == 0) {
-        //A席
-        console.log("A sheet section loading complete");
-        //clearInterval(t);
-        //f1();
-      } else if ($(".loading:nth-child(3):visible").length == 0) {
-        //B席
-        console.log("B sheet section loading complete");
-        //clearInterval(t);
-        //f1();
+        //S席
+        f1("S");
       }
     }
   }, 100);
