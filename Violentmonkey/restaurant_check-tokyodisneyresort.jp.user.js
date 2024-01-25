@@ -28,17 +28,16 @@ function lineNotification() {
   });
 }
 const f1 = async function () {
+  clickFlg = false;
   times = ["18:00", "18:10", "18:20", "18:30", "18:40", "18:50", "19:00", "19:10", "19:20", "19:30", "19:40", "19:50"];
   $(".icon-arrow").click();
-  if ($("tr").length == 3) {
-    wait_reload(3 * 1000);
-  }
   $("tr")
     .each(function (index, element) {
       state = $(element).children("td.state").text().trim();
       time = $(element).children("th").text().trim();
       console.log(time + " " + state);
       if (state == "空席あり" && times.includes(time)) {
+        clickFlg = true;
         lineNotification();
         $(element).children("td.btn").children("a").click();
         return false;
@@ -46,7 +45,10 @@ const f1 = async function () {
     })
     .promise()
     .done(function () {
-      wait_reload(120 * 1000);
+      if (clickFlg == false) {
+        console.log("全部満席");
+        wait_reload(1 * 1000);
+      }
     });
 };
 
