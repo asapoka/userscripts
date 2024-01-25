@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        restaurant_check- tokyodisneyresort.jp
-// @namespace   Violentmonkey Scripts
+// @namespace   東京ディズニーリゾートのレストランの空きを繰り返しチェックし、空いていたら予約ボダンを押下する。
 // @match       https://reserve.tokyodisneyresort.jp/sp/restaurant/check/
 // @grant       GM.xmlHttpRequest
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/3/29 0:11:22
 // ==/UserScript==
 
