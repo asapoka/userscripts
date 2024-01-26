@@ -36,7 +36,7 @@ const checkState = async function () {
   clickFlg = false;
 
   // 予約希望する時間帯
-  times = ["17:50", "18:00", "18:10", "18:20", "18:30", "18:40", "18:50", "19:10", "19:20", "19:30", "19:40", "19:50", "20:00", "20:10", "20:20"];
+  times = ["19:10", "19:20", "19:30", "19:40", "19:50", "20:00", "20:10", "20:20"];
 
   // 各時間帯を展開する
   $(".icon-arrow").click();
@@ -50,13 +50,20 @@ const checkState = async function () {
       time = $(element).children("th").text().trim();
       console.log(time + " " + state);
       // 空席あり かつ 希望時間ならクリック
-      if (state == "空席あり" && times.includes(time)) {
+      if (state == "空席あり") {
         // クリックできたのでフラグオン（リロードしない）
         clickFlg = true;
         // LINE通知送信
         lineNotification();
         // 予約するをクリック
         $(element).children("td.btn").children("a").click();
+        setTimeout(function () {
+          $(".checkboxLabel").click();
+          console.log("check!");
+          $(".js-confirm").click();
+          console.log("confirm");
+        }, 1000);
+
         // ループ中断
         return false;
       }
@@ -89,6 +96,9 @@ const wait_loading = async function () {
       clearInterval(t);
       // 空き状況チェック関数呼び出し
       checkState();
+    } else if (t > 1000) {
+      console.log("time out?");
+      window.location.reload();
     }
   }, 10);
 };
