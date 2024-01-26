@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        wait_queue-reserve-q.tokyodisneyresort.jp
-// @namespace   Violentmonkey Scripts
+// @namespace   待ち行列画面を定期的に監視し、自動で次の画面へ進む
 // @match       https://reserve-q.tokyodisneyresort.jp/*
 // @grant       none
 // @version     1.1
@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 let v1 = 0;
-const f1 = async function () {
+const checkQueue = async function () {
   t = setInterval(function () {
     if ($("#buttonConfirmRedirect:visible:first").length > 0) {
       $("#buttonConfirmRedirect:visible:first").click();
@@ -20,7 +20,7 @@ const f1 = async function () {
   }, 1000);
 };
 
-const f2 = async function () {
+const checkQueueAgain = async function () {
   t = setInterval(function () {
     if ($(".l").text() == "もう一度並ぶ") {
       location.href = $("a.btn").attr("href");
@@ -33,8 +33,8 @@ const f2 = async function () {
 
 async function exec_workflow() {
   // やりたいことの流れはここに記述する。
-  await f1();
-  await f2();
+  await checkQueue();
+  await checkQueueAgain();
   // タイマー処理の登録もここで行う。
 }
 //////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        overflow-tokyodisneyresort.jp
-// @namespace   Violentmonkey Scripts
+// @namespace   アクセス集中画面が表示されたら、１つ前へ戻る
 // @match       https://reserve.tokyodisneyresort.jp/overflow/showrestaurant/
 // @grant       none
 // @version     1.0
