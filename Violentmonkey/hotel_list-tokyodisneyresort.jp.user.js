@@ -30,19 +30,30 @@ const f1 = async function () {
 function show_room_info(hotel) {
   // ホテル名を表示
   console.log(getHotelName(hotel));
-
+  // ホテルの部屋タイプを取得
   roomTypes = getHotelRoomTypes(hotel);
+  // 部屋タイプごとのループ処理
   roomTypes.each(function (index, roomType) {
     // 部屋タイプを表示
-    console.log(" " + getHotelRoomTypeName(roomType));
+    console.log("-" + getHotelRoomTypeName(roomType));
+    // 部屋セクションを取得
     roomSections = getRoomSections(roomType);
+    //部屋セクションごとのループ処理
     roomSections.each(function (index, roomSection) {
       // 部屋セクション名を取得
-      console.log("   " + getRoomSectionName(roomSection));
+      console.log("--" + getRoomSectionName(roomSection));
+      // ベッドセクションを取得
+      bedSections = $(roomSection).find(".bedSection");
+      // ベッドセクションごとのループ処理
+      bedSections.each(function (index, bedSection) {
+        // ベッドセクション名を取得
+        console.log("---" + getBedSectionName(bedSection));
+      });
     });
   });
 }
 
+// ホテル名を取得
 function getHotelName(hotel) {
   str = $("h1.hdg04", hotel).text().trim();
   return str.substr(str.indexOf(";") + 1);
@@ -56,13 +67,28 @@ function getHotelRoomTypes(hotel) {
 function getHotelRoomTypeName(roomType) {
   return $("h1", roomType).text().trim();
 }
+
+// 部屋セクションを取得
 function getRoomSections(roomType) {
   return $(roomType).find(".roomSection");
 }
 
+// 部屋セクション名を取得
 function getRoomSectionName(roomSection) {
   return $(roomSection).find(".vacancySearchParamName")[0].value;
 }
+
+// ベッドセクションを取得
+function getBedSections(roomSection) {
+  return $(roomSection).find(".bedSection");
+}
+
+// ベッドセクション名を取得
+function getBedSectionName(bedSection) {
+  return $(bedSection).find(".roomBedTypeName")[0].value;
+}
+
+// メイン処理
 async function exec_workflow() {
   // やりたいことの流れはここに記述する。
   await f1();
