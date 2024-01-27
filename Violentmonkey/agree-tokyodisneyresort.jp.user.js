@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        agree-tokyodisneyresort.jp
-// @namespace   Violentmonkey Scripts
+// @namespace   ホテル予約情報入力画面の同意チェックを入力する
 // @match       https://reserve.tokyodisneyresort.jp/online/sp/wv/roominfo/
 // @grant       none
 // @version     1.0
@@ -9,9 +9,21 @@
 // ==/UserScript==
 
 const f1 = async function () {
-  window.alert("hello");
-  $("[name='agree']").click();
-  $("#nextButton").click();
+  // 同意するチェックボックス
+  if ($("[name='agree']").length > 0) {
+    $("[name='agree']").click();
+    console.log("agree click");
+  }
+  // 次へ進むボタン
+  if ($("#nextButton").length > 0) {
+    $("#nextButton").click();
+    console.log("nextButton click");
+  }
+  // 予約取消手数料発生する場合の確認ダイアログ
+  if ($(".js-confirm").length > 0) {
+    $(".js-confirm").click();
+    console.log("confirm click");
+  }
 };
 
 async function exec_workflow() {
