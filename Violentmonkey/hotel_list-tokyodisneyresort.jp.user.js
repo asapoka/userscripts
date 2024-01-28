@@ -7,9 +7,14 @@
 // @author      -
 // @description 2024/1/28 0:25:07
 // ==/UserScript==
+
+// memo
+// searchRoomName=の箇所をroomSectionTypeNameのURLエンコード結果にすると該当の部屋のみ検索できる
 const f1 = async function () {
+  // 部屋リスト展開
   $(".ecRoomTitleBar").click();
   setTimeout(100);
+  // ベッドタイプ展開
   $(".subHeader").click();
   // 各ホテルの親要素を取得
   // ディズニーランドホテル
