@@ -47,7 +47,7 @@ function show_room_info(hotel) {
         // ベッドセクション名を取得
 
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
-          rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection)));
+          rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
         }
       });
     });
@@ -90,11 +90,16 @@ function getBedSectionName(bedSection) {
   return $(bedSection).find(".roomBedTypeName")[0].value;
 }
 
-function Room(hotelName, roomTypeName, roomSectionTypeName, bedSectionTypeName) {
+// 値段を取得
+function getPrice(bedSection) {
+  return $($(bedSection).find(".price")[0]).text();
+}
+function Room(hotelName, roomTypeName, roomSectionTypeName, bedSectionTypeName, price) {
   this.hotelName = hotelName;
   this.roomTypeName = roomTypeName;
   this.roomSectionTypeName = roomSectionTypeName;
   this.bedSectionTypeName = bedSectionTypeName;
+  this.price = price;
 }
 // 要素の読み込み待ちする関数
 const wait_loading = async function () {
