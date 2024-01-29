@@ -2,7 +2,7 @@
 // @name        hotel_list-tokyodisneyresort.jp
 // @namespace   ホテル検索結果リスト走査
 // @match       https://reserve.tokyodisneyresort.jp/sp/hotel/list/*
-// @grant       none
+// @grant       GM.xmlHttpRequest
 // @version     1.0
 // @author      -
 // @description 2024/1/28 0:25:07
@@ -10,6 +10,37 @@
 
 // memo
 // searchRoomName=の箇所をroomSectionTypeNameのURLエンコード結果にすると該当の部屋のみ検索できる
+
+// LINE通知メッセージ
+const params = new URLSearchParams({
+  message: "ホテルの空きを掴みました！",
+});
+
+// LINE通知送信
+function lineNotification(msg) {
+  console.log("notification!");
+  GM.xmlHttpRequest({
+    method: "POST",
+    url: "https://notify-api.line.me/api/notify",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: "Bearer ${YOUR TOKEN}",
+    },
+    data: params.toString(),
+    onload: function (response) {
+      console.log(response.responseText);
+    },
+  });
+}
+
+// 指定した時間待ってリロードする関数
+function wait_reload(t) {
+  console.log("ready reload...");
+  setTimeout(function () {
+    console.log("reload!");
+    window.location.reload();
+  }, t);
+}
 const f1 = async function () {
   // 部屋リスト展開
   $(".ecRoomTitleBar").click();
@@ -36,6 +67,7 @@ const f1 = async function () {
 };
 // ホテルから部屋タイプを表示する
 function show_room_info(hotel) {
+  var clickFlag = false;
   var rooms = new Array();
   // ホテルの部屋タイプを取得
   roomTypes = getHotelRoomTypes(hotel);
@@ -53,11 +85,20 @@ function show_room_info(hotel) {
 
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
           rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
+          if (getRoomSectionName(roomSection) == "") {
+            clickFlag = true;
+            lineNotification();
+            $(bedSection).first(".js-reserve.button.next").click();
+          }
         }
       });
     });
   });
   console.table(rooms);
+
+  if ((clickFlag = false)) {
+    wait_reload(100);
+  }
 }
 
 // ホテル名を取得
