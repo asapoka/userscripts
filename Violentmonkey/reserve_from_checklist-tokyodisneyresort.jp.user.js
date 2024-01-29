@@ -4,10 +4,11 @@
 // @match       https://reserve.tokyodisneyresort.jp/sp/checklist/hotel/
 // @grant       none
 // @version     1.0
-// @author
+// @author      asapoka
 // @description 2023/2/27 22:56:23
 // ==/UserScript==
 
+//
 const timer1 = async function (h, m, s) {
   var now = new Date(),
     then = new Date(),
@@ -20,7 +21,7 @@ const timer1 = async function (h, m, s) {
   console.log(diff / 1000);
   //when time already has been reached
   if (diff <= 0) {
-    //console.log('時間過ぎたよ');
+    console.log("時間過ぎたよ");
   }
   //start a timer
   else {
@@ -68,24 +69,33 @@ const f1 = async function (interval) {
       console.log("js-reserve click");
       clearInterval(t);
     } else if (count > limit) {
-      if (
-        $(".disabled:visible").length >= 2 &&
-        $(".js-reserve:visible:first").length == 0
-      ) {
+      if ($(".disabled:visible").length >= 2 && $(".js-reserve:visible:first").length == 0) {
         location.reload();
       }
       clearInterval(t);
     }
   }, interval);
 };
-
+// 要素の読み込み待ちする関数
+const wait_loading = async function () {
+  t = setInterval(function () {
+    if ($(".ui-mobile.ui-loading").length == 0 && $(".ui-mobile.ui-mobile-rendering").length == 0) {
+      console.log("ロード完了");
+      // 監視中断
+      clearInterval(t);
+      f1(200);
+    } else if (t > 1000) {
+      console.log("time out?");
+      window.location.reload();
+    }
+  }, 10);
+};
 async function exec_workflow() {
-  // やりたいことの流れはここに記述する。
   // 行列に並び直す時間
   await timer1(10, 57, 0);
   //引数より3秒くらい遅れる
   await timer2(10, 59, 53);
-  await f1(200);
+  await wait_loading();
 }
 //////////////////////////////////////////////////////////////////////////////////////////////
 
