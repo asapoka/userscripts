@@ -1,29 +1,44 @@
 // ==UserScript==
 // @name        reserve_from_checklist-tokyodisneyresort.jp
-// @namespace   検討リストに登録済みのホテルに11時ちょうどにアタックする
+// @namespace   Violentmonkey Scripts
 // @match       https://reserve.tokyodisneyresort.jp/sp/checklist/hotel/
-// @grant       none
+// @grant       GM.xmlHttpRequest
 // @version     1.0
 // @author      asapoka
 // @description 2023/2/27 22:56:23
 // ==/UserScript==
 
-// queueに並びなおすタイマー
+// LINE通知メッセージ
+const params = new URLSearchParams({
+  message: "ホテルの空きを掴みました！",
+});
+
+// LINE通知送信
+function lineNotification() {
+  console.log("notification!");
+  GM.xmlHttpRequest({
+    method: "POST",
+    url: "https://notify-api.line.me/api/notify",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: "Bearer ${YOUR TOKEN}",
+    },
+    data: params.toString(),
+    onload: function (response) {
+      console.log(response.responseText);
+    },
+  });
+}
 const timer1 = async function (h, m, s) {
-  // 現在時刻を取得
-  var now = new Date();
-
-  // 予定時刻
-  var target = new Date();
-  target.setHours(h);
-  target.setMinutes(m);
-  target.setSeconds(s);
-
-  // 予定時刻まであとどれくらいか
-  var diff = target.getTime() - now.getTime();
+  var now = new Date(),
+    then = new Date(),
+    diff;
+  then.setHours(h);
+  then.setMinutes(m);
+  then.setSeconds(s);
+  diff = then.getTime() - now.getTime();
   console.log(now.toLocaleString());
   console.log(diff / 1000);
-
   //when time already has been reached
   if (diff <= 0) {
     console.log("時間過ぎたよ");
@@ -38,20 +53,16 @@ const timer1 = async function (h, m, s) {
     }, diff);
   }
 };
-// 予約時間にリロードするタイマー
+
 const timer2 = async function (h, m, s) {
-  // 現在時刻を取得
-  var now = new Date();
+  var now = new Date(),
+    then = new Date(),
+    diff;
+  then.setHours(h);
+  then.setMinutes(m);
+  then.setSeconds(s);
+  diff = then.getTime() - now.getTime();
 
-  // 予定時刻
-  var target = new Date();
-  target.setHours(h);
-  target.setMinutes(m);
-  target.setSeconds(s);
-
-  // 予定時刻まであとどれくらいか
-  var diff = target.getTime() - now.getTime();
-  console.log(now.toLocaleString());
   console.log(diff / 1000);
   //when time already has been reached
   if (diff <= 0) {
@@ -76,6 +87,7 @@ const f1 = async function (interval) {
     if ($(".js-reserve:visible:first").length > 0) {
       $(".js-reserve:visible:first").click();
       console.log("js-reserve click");
+      lineNotification();
       clearInterval(t);
     } else if (count > limit) {
       if ($(".disabled:visible").length >= 2 && $(".js-reserve:visible:first").length == 0) {
