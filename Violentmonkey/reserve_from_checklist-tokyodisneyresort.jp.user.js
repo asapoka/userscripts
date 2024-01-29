@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        reserve_from_checklist-tokyodisneyresort.jp
-// @namespace   Violentmonkey Scripts
+// @namespace   検討リストに登録済みのホテルに11時ちょうどにアタックする
 // @match       https://reserve.tokyodisneyresort.jp/sp/checklist/hotel/
 // @grant       none
 // @version     1.0
@@ -8,17 +8,22 @@
 // @description 2023/2/27 22:56:23
 // ==/UserScript==
 
-//
+// queueに並びなおすタイマー
 const timer1 = async function (h, m, s) {
-  var now = new Date(),
-    then = new Date(),
-    diff;
-  then.setHours(h);
-  then.setMinutes(m);
-  then.setSeconds(s);
-  diff = then.getTime() - now.getTime();
+  // 現在時刻を取得
+  var now = new Date();
+
+  // 予定時刻
+  var target = new Date();
+  target.setHours(h);
+  target.setMinutes(m);
+  target.setSeconds(s);
+
+  // 予定時刻まであとどれくらいか
+  var diff = target.getTime() - now.getTime();
   console.log(now.toLocaleString());
   console.log(diff / 1000);
+
   //when time already has been reached
   if (diff <= 0) {
     console.log("時間過ぎたよ");
@@ -33,16 +38,20 @@ const timer1 = async function (h, m, s) {
     }, diff);
   }
 };
-
+// 予約時間にリロードするタイマー
 const timer2 = async function (h, m, s) {
-  var now = new Date(),
-    then = new Date(),
-    diff;
-  then.setHours(h);
-  then.setMinutes(m);
-  then.setSeconds(s);
-  diff = then.getTime() - now.getTime();
+  // 現在時刻を取得
+  var now = new Date();
 
+  // 予定時刻
+  var target = new Date();
+  target.setHours(h);
+  target.setMinutes(m);
+  target.setSeconds(s);
+
+  // 予定時刻まであとどれくらいか
+  var diff = target.getTime() - now.getTime();
+  console.log(now.toLocaleString());
   console.log(diff / 1000);
   //when time already has been reached
   if (diff <= 0) {
