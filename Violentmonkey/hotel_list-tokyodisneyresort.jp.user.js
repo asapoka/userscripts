@@ -59,11 +59,11 @@ const f1 = async function () {
   // セレブレーションホテル
   celebration = $(".js-hotelDiv.DHC.boxHotel04.js-accordion");
 
-  show_room_info(disneyland);
+  //show_room_info(disneyland);
   show_room_info(miracosta);
-  show_room_info(ambassador);
-  show_room_info(tsh);
-  show_room_info(celebration);
+  //show_room_info(ambassador);
+  //show_room_info(tsh);
+  //show_room_info(celebration);
 };
 // ホテルから部屋タイプを表示する
 function show_room_info(hotel) {
@@ -85,7 +85,7 @@ function show_room_info(hotel) {
 
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
           rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
-          if (getRoomSectionName(roomSection) == "") {
+          if (getRoomSectionName(roomSection) == "スペチアーレ・ルーム＆スイート　ポルト・パラディーゾ・サイド テラスルーム ハーバーグランドビュー") {
             clickFlag = true;
             lineNotification();
             $(bedSection).first(".js-reserve.button.next").click();
@@ -96,7 +96,7 @@ function show_room_info(hotel) {
   });
   console.table(rooms);
 
-  if ((clickFlag = false)) {
+  if (clickFlag == false) {
     wait_reload(100);
   }
 }
