@@ -19,16 +19,14 @@ const f2 = async function () {
 const f3 = async function () {
   if ($(".check").eq(1).text().match("完売")) {
     console.log("完売!");
-    location.href =
-      "https://reserve.tokyodisneyresort.jp/online/anniversary/select/";
+    location.href = "https://reserve.tokyodisneyresort.jp/online/anniversary/select/";
   } else if ($(".check").eq(1).text().match("A")) {
     window.alert("在庫あり!");
   }
 };
 
 const f4 = async function () {
-  location.href =
-    "https://reserve.tokyodisneyresort.jp/online/anniversary/select/";
+  location.href = "https://reserve.tokyodisneyresort.jp/online/anniversary/select/";
 };
 
 const wait_loading = async function () {

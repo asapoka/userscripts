@@ -10,8 +10,7 @@
 const f1 = async function () {
   t = setInterval(function () {
     if (location.href == "https://reserve.tokyodisneyresort.jp/fo/index.html") {
-      location.href =
-        "https://reserve.tokyodisneyresort.jp/sp/checklist/hotel/";
+      location.href = "https://reserve.tokyodisneyresort.jp/sp/checklist/hotel/";
       console.log("検討リストへ");
       clearInterval(t);
     }
