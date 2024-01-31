@@ -1,6 +1,6 @@
 # userscripts
 
-## Violentmonkey で利用するブラウザのユーザスクリプトを管理するリポジトリ
+## ブラウザで使うユーザスクリプトを管理するリポジトリ
 
 https://violentmonkey.github.io/
 
