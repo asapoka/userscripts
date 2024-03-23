@@ -4,7 +4,7 @@
 // @match       https://e5489.jr-odekake.net/e5489/cspc/CBChangeTrainPC*
 // @match       https://e5489.jr-odekake.net/e5489/cssp/CBChangeTrainSP
 // @grant       none
-// @version     1.0
+// @version     1.0.1
 // @author      -
 // @description 列車の変更を押下後サンライズツイン→シングルの優先度で選択をクリックします
 // ==/UserScript==
