@@ -10,6 +10,7 @@
 // @description 2024/3/22 18:21:40
 // ==/UserScript==
 async function exec_workflow() {
+  // 禁煙→喫煙席の順でラジオボタンが表示されるので、禁煙を優先して押下する
   $(".toggle-check-button-2:first").click();
   $(".decide-button").click();
 }
