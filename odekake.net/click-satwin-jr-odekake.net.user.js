@@ -27,7 +27,7 @@ async function exec_workflow() {
     $(btnlist[2]).find(".decide-button").click();
   } else if ($(btnlist[1]).find(".decide-button").length == 1) {
     // シングル
-    $(btnlist[1]).find(".decide-button").click();
+    //$(btnlist[1]).find(".decide-button").click();
   } else {
     // すべて選択不可の場合
   }
@@ -42,7 +42,7 @@ async function exec_workflow() {
     $(btnlist[2]).find(".decide-button").click();
   } else if ($(btnlist[1]).find(".decide-button").length == 1) {
     // シングル
-    $(btnlist[1]).find(".decide-button").click();
+    //$(btnlist[1]).find(".decide-button").click();
   } else {
     // すべて選択不可の場合
   }
