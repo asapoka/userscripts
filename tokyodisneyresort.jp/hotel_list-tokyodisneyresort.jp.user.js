@@ -90,7 +90,7 @@ function show_room_info(hotel) {
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
           rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
           sectionName = getRoomSectionName(roomSection);
-          if (sectionName.include("グランドシャトー")) {
+          if (sectionName.match("グランドシャトー")) {
             clickFlag = true;
             lineNotification();
             $(bedSection).first(".js-reserve.button.next").click();
