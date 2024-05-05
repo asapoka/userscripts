@@ -5,6 +5,7 @@
 // @grant       GM.xmlHttpRequest
 // @version     1.0
 // @author      -
+// @require     https://code.jquery.com/jquery-3.7.1.slim.js
 // @description 2024/1/28 0:25:07
 // ==/UserScript==
 
@@ -58,12 +59,15 @@ const f1 = async function () {
   tsh = $(".js-hotelDiv.TSH.boxHotel04.js-accordion");
   // セレブレーションホテル
   celebration = $(".js-hotelDiv.DHC.boxHotel04.js-accordion");
+  // ファンタジースプリングス
+  fsh = $(".js-hotelDiv.FSH.boxHotel04.js-accordion");
 
   //show_room_info(disneyland);
-  show_room_info(miracosta);
+  //show_room_info(miracosta);
   //show_room_info(ambassador);
   //show_room_info(tsh);
   //show_room_info(celebration);
+  show_room_info(fsh);
 };
 // ホテルから部屋タイプを表示する
 function show_room_info(hotel) {
@@ -85,7 +89,8 @@ function show_room_info(hotel) {
 
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
           rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
-          if (getRoomSectionName(roomSection) == "スペチアーレ・ルーム＆スイート　ポルト・パラディーゾ・サイド テラスルーム ハーバーグランドビュー") {
+          sectionName = getRoomSectionName(roomSection);
+          if (sectionName.include("グランドシャトー")) {
             clickFlag = true;
             lineNotification();
             $(bedSection).first(".js-reserve.button.next").click();
