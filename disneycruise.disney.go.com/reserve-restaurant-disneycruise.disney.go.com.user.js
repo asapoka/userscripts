@@ -18,6 +18,10 @@ function startCheckLoading() {
   // 既にインターバルがセットアップされているかどうかを検査
   if (!nIntervId) {
     nIntervId = setInterval(checkLoad, 1000);
+    setTimeout(() => {
+      console.log("time out reload!");
+      window.location.reload();
+    }, 60000);
   }
 }
 
