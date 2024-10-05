@@ -66,15 +66,17 @@ function checkLoad() {
       var activityButton = $(activity).find(".select-activity-button");
       //予約ボタンがあった場合
       if (activityButton.length > 0) {
-        //完売フラグをfalseへ変更
-        soldOutFlg = false;
         console.log(restaurantName + "->予約できます！");
-        //予約ボタンを押下
-        activityButton.click();
-        //利用者チェックボックス表示待ちを開始
-        nIntervId = setInterval(checkCB, 100);
-        //ループ処理中断
-        break;
+        if (restaurantName == "Remy Brunch") {
+          //完売フラグをfalseへ変更
+          soldOutFlg = false;
+          //予約ボタンを押下
+          activityButton.click();
+          //利用者チェックボックス表示待ちを開始
+          nIntervId = setInterval(checkCB, 100);
+          //ループ処理中断
+          break;
+        }
       } else {
         console.log(restaurantName + "->予約できません...");
       }
