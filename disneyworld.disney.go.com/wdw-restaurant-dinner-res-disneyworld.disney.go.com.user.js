@@ -23,8 +23,10 @@ function startCheckLoading() {
   if (!nIntervId) {
     nIntervId = setInterval(checkLoad, 100);
     setTimeout(() => {
-      console.log("time out reload!");
-      //window.location.reload();
+      if (soldOutFlg) {
+        console.log("time out reload!");
+        window.location.reload();
+      }
     }, 60000);
   }
 }
