@@ -23,10 +23,6 @@ function lineNotification(msg) {
     method: "POST",
     url: "https://notify-api.line.me/api/notify",
     headers: {
-  // LINE通知メッセージ
-  let params = new URLSearchParams({
-    message: msg,
-  });
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: "Bearer ${YOUR TOKEN}",
     },
