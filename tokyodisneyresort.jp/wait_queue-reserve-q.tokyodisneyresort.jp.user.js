@@ -4,8 +4,8 @@
 // @match       https://reserve-q.tokyodisneyresort.jp/*
 // @grant       none
 // @version     1.1
-// @author
-// @description 2023/3/1 21:15:25
+// @author      asapoka
+// @description 2024/11/23 20:54:01
 // ==/UserScript==
 
 let v1 = 0;
@@ -16,6 +16,7 @@ const checkQueue = async function () {
       console.log("すすむボタン押下");
       clearInterval(t);
     }
+    document.title = "順番待ち中...";
     console.log("すすむボタンない");
   }, 1000);
 };
@@ -27,7 +28,6 @@ const checkQueueAgain = async function () {
       console.log("もう一度並ぶ押下");
       clearInterval(t);
     }
-    //console.log('もう一度並ぶなし');
   }, 5000);
 };
 
