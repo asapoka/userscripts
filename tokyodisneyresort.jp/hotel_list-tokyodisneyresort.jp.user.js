@@ -12,18 +12,21 @@
 // memo
 // searchRoomName=の箇所をroomSectionTypeNameのURLエンコード結果にすると該当の部屋のみ検索できる
 
-// LINE通知メッセージ
-const params = new URLSearchParams({
-  message: "ホテルの空きを掴みました！",
-});
-
 // LINE通知送信
 function lineNotification(msg) {
+  // LINE通知メッセージ
+  let params = new URLSearchParams({
+    message: msg,
+  });
   console.log("notification!");
   GM.xmlHttpRequest({
     method: "POST",
     url: "https://notify-api.line.me/api/notify",
     headers: {
+  // LINE通知メッセージ
+  let params = new URLSearchParams({
+    message: msg,
+  });
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: "Bearer ${YOUR TOKEN}",
     },
@@ -88,12 +91,25 @@ function show_room_info(hotel) {
         // ベッドセクション名を取得
 
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
-          rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
+          rooms.push(
+            new Room(
+              getHotelName(hotel),
+              getHotelRoomTypeName(roomType),
+              getRoomSectionName(roomSection),
+              getBedSectionName(bedSection),
+              getPrice(bedSection)
+            )
+          );
+
           sectionName = getRoomSectionName(roomSection);
-          if (sectionName.match("グランドシャトー")) {
+          // 予約したいホテルのキーワード
+          if (sectionName.match("ファンタジーシャトー")) {
             clickFlag = true;
-            lineNotification();
-            $(bedSection).first(".js-reserve.button.next").click();
+            lineNotification(sectionName);
+            document.title = "★★★★★★★★★";
+            // 予約手続きボタンをクリック
+            $(bedSection).first(".js-reserve.button.next:visible").click();
+            $(".js-reserve.button.next:visible").click();
           }
         }
       });
@@ -145,7 +161,13 @@ function getBedSectionName(bedSection) {
 function getPrice(bedSection) {
   return $($(bedSection).find(".price")[0]).text();
 }
-function Room(hotelName, roomTypeName, roomSectionTypeName, bedSectionTypeName, price) {
+function Room(
+  hotelName,
+  roomTypeName,
+  roomSectionTypeName,
+  bedSectionTypeName,
+  price
+) {
   this.hotelName = hotelName;
   this.roomTypeName = roomTypeName;
   this.roomSectionTypeName = roomSectionTypeName;
@@ -155,11 +177,17 @@ function Room(hotelName, roomTypeName, roomSectionTypeName, bedSectionTypeName, 
 // 要素の読み込み待ちする関数
 const wait_loading = async function () {
   t = setInterval(function () {
-    if ($(".ui-mobile.ui-loading").length == 0 && $(".ui-mobile.ui-mobile-rendering").length == 0) {
-      console.log("ロード完了");
+    var URL = location.href;
+    var useDate = URL.match(/\d{8}/);
+    document.title = useDate + ":読込中...";
+    if (
+      $(".ui-mobile.ui-loading").length == 0 &&
+      $(".ui-mobile.ui-mobile-rendering").length == 0
+    ) {
       // 監視中断
       clearInterval(t);
       f1();
+      document.title("読込完了");
     } else if (t > 1000) {
       console.log("time out?");
       window.location.reload();
