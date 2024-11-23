@@ -12,6 +12,9 @@
 // memo
 // searchRoomName=の箇所をroomSectionTypeNameのURLエンコード結果にすると該当の部屋のみ検索できる
 
+// 利用日をURLより取得
+var useDate = location.href.match(/\d{8}/);
+
 // LINE通知送信
 function lineNotification(msg) {
   // LINE通知メッセージ
@@ -102,7 +105,7 @@ function show_room_info(hotel) {
           if (sectionName.match("ファンタジーシャトー")) {
             clickFlag = true;
             lineNotification(sectionName);
-            document.title = "★★★★★★★★★";
+            document.title = useDate + "★★★★★★★★★";
             // 予約手続きボタンをクリック
             $(bedSection).first(".js-reserve.button.next:visible").click();
             $(".js-reserve.button.next:visible").click();
@@ -173,8 +176,6 @@ function Room(
 // 要素の読み込み待ちする関数
 const wait_loading = async function () {
   t = setInterval(function () {
-    var URL = location.href;
-    var useDate = URL.match(/\d{8}/);
     document.title = useDate + ":読込中...";
     if (
       $(".ui-mobile.ui-loading").length == 0 &&
@@ -183,7 +184,7 @@ const wait_loading = async function () {
       // 監視中断
       clearInterval(t);
       f1();
-      document.title("読込完了");
+      document.title(useDate + "読込完了");
     } else if (t > 1000) {
       console.log("time out?");
       window.location.reload();
