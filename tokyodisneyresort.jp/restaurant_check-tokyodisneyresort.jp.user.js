@@ -55,7 +55,7 @@ const checkState = async function () {
       time = $(element).children("th").text().trim();
       console.log(time + " " + state);
       // 空席あり かつ 希望時間ならクリック
-      if (state == "空席あり") {
+      if (state == "空席あり" && times.includes(time)) {
         // クリックできたのでフラグオン（リロードしない）
         clickFlg = true;
         // LINE通知送信
