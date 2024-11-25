@@ -94,15 +94,17 @@ function wait_reload(t) {
 
 // 要素の読み込み待ちする関数
 const wait_loading = async function () {
+  var count = 0;
   t = setInterval(function () {
-    document.title = useDate + ":読込中...";
+    document.title = useDate + ":読込中..." + count;
+    count++;
     if ($(".ui-mobile" + ".ui-loading").length == 0) {
       console.log("ロード完了");
       // 監視中断
       clearInterval(t);
       // 空き状況チェック関数呼び出し
       checkState();
-    } else if (t > 1000) {
+    } else if (count > 1000) {
       console.log("time out?");
       window.location.reload();
     }
