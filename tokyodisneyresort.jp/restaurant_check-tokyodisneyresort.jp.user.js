@@ -107,6 +107,8 @@ const wait_loading = async function () {
     } else if (count > 1000) {
       console.log("time out?");
       window.location.reload();
+      // 監視中断
+      clearInterval(t);
     }
   }, 10);
 };
