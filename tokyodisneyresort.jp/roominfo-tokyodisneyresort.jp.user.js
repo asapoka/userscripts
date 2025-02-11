@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/online/sp/wv/roominfo/next
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/3/4 12:38:21
 // ==/UserScript==
 const f1 = async function () {

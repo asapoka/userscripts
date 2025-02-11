@@ -5,7 +5,7 @@
 // @match       https://auth.westjr.co.jp/web/v1/login
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2024/3/22 17:57:00
 // ==/UserScript==
 async function exec_workflow() {

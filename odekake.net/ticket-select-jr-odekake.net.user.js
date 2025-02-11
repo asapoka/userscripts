@@ -5,7 +5,7 @@
 // @match       https://e5489.jr-odekake.net/e5489/cspc/CBVacantCompPC
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2024/3/22 17:54:59
 // ==/UserScript==
 async function exec_workflow() {

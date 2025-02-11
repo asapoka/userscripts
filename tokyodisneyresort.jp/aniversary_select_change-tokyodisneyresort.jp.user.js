@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/online/anniversary/select/change
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/3/25 9:03:17
 // ==/UserScript==
 

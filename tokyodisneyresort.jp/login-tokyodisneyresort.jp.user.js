@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/sp/login/
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/3/22 21:45:28
 // ==/UserScript==
 const f1 = async function () {

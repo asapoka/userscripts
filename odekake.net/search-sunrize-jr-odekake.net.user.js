@@ -5,7 +5,7 @@
 // @match       https://e5489.jr-odekake.net/e5489/cssp/CBTrainEntrySP*
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2024/3/22 8:59:33
 // ==/UserScript==
 async function exec_workflow() {

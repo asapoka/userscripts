@@ -4,7 +4,7 @@
 // @match       https://www.eki-net.com/Personal/reserve/wb/RouteSearchConditionInput/Index
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/3/28 22:49:23
 // ==/UserScript==
 const f1 = async function () {

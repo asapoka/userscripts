@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/overflow/showrestaurant/
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/9/17 9:29:20
 // ==/UserScript==
 const f1 = async function () {

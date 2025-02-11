@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/online/sp/error/maintenance/planning*
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2024/1/21 3:06:34
 // ==/UserScript==
 

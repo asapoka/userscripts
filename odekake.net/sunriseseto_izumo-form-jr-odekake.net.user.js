@@ -4,7 +4,7 @@
 // @match       https://www.jr-odekake.net/goyoyaku/campaign/sunriseseto_izumo/form.html*
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description サンライズ瀬戸・出雲 予約
 // ==/UserScript==
 const f1 = async function () {

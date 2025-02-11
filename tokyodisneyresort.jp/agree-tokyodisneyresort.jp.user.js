@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/online/sp/wv/roominfo/
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/3/4 12:27:00
 // ==/UserScript==
 

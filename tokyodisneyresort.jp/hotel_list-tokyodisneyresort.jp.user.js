@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/sp/hotel/list/*
 // @grant       GM.xmlHttpRequest
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @require     https://code.jquery.com/jquery-3.7.1.slim.js
 // @description 2024/1/28 0:25:07
 // ==/UserScript==
@@ -90,15 +90,7 @@ function show_room_info(hotel) {
         // ベッドセクション名を取得
 
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
-          rooms.push(
-            new Room(
-              getHotelName(hotel),
-              getHotelRoomTypeName(roomType),
-              getRoomSectionName(roomSection),
-              getBedSectionName(bedSection),
-              getPrice(bedSection)
-            )
-          );
+          rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
 
           sectionName = getRoomSectionName(roomSection);
           // 予約したいホテルのキーワード
@@ -160,13 +152,7 @@ function getBedSectionName(bedSection) {
 function getPrice(bedSection) {
   return $($(bedSection).find(".price")[0]).text();
 }
-function Room(
-  hotelName,
-  roomTypeName,
-  roomSectionTypeName,
-  bedSectionTypeName,
-  price
-) {
+function Room(hotelName, roomTypeName, roomSectionTypeName, bedSectionTypeName, price) {
   this.hotelName = hotelName;
   this.roomTypeName = roomTypeName;
   this.roomSectionTypeName = roomSectionTypeName;
@@ -177,10 +163,7 @@ function Room(
 const wait_loading = async function () {
   t = setInterval(function () {
     document.title = useDate + ":読込中...";
-    if (
-      $(".ui-mobile.ui-loading").length == 0 &&
-      $(".ui-mobile.ui-mobile-rendering").length == 0
-    ) {
+    if ($(".ui-mobile.ui-loading").length == 0 && $(".ui-mobile.ui-mobile-rendering").length == 0) {
       // 監視中断
       clearInterval(t);
       f1();

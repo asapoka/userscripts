@@ -5,7 +5,7 @@
 // @match       https://e5489.jr-odekake.net/e5489/cspc/CBTrainSimpleEntryPC
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 駅名を入力タブを押下する
 // ==/UserScript==
 async function exec_workflow() {

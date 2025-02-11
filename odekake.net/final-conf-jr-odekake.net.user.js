@@ -4,7 +4,7 @@
 // @match       https://e5489.jr-odekake.net/e5489/cspc/CBRsvFinalConfNumberSeatPC*
 // @grant       GM.xmlHttpRequest
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 最終確認
 // ==/UserScript==
 

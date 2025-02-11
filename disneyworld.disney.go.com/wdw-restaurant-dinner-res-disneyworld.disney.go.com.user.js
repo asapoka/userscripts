@@ -4,7 +4,7 @@
 // @match       https://disneyworld.disney.go.com/dine-res/restaurant/*
 // @grant       GM.xmlHttpRequest
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @require     https://code.jquery.com/jquery-3.7.1.slim.min.js
 // @description 2024/10/5 14:40:02
 // ==/UserScript==

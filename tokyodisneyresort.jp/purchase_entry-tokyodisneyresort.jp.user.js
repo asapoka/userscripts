@@ -4,7 +4,7 @@
 // @match       https://reserve.tokyodisneyresort.jp/online/sp/purchase/entry/new/
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 2023/3/4 13:12:11
 // ==/UserScript==
 

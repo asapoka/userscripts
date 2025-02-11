@@ -6,7 +6,7 @@
 // @match       https://e5489.jr-odekake.net/e5489/cssp/CBDayTimeArriveSelRsvSP*
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description この列車を変更
 // ==/UserScript==
 async function exec_workflow() {

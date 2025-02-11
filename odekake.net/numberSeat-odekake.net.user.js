@@ -4,7 +4,7 @@
 // @match       https://e5489.jr-odekake.net/e5489/cspc/CBNumberSeatMemberIfPC*
 // @grant       none
 // @version     1.0
-// @author      -
+// @author      asapoka
 // @description 乗車券選択
 // ==/UserScript==
 const f1 = async function () {
