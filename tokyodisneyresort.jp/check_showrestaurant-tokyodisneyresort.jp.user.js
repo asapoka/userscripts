@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        check_showrestaurant-tokyodisneyresort.jp/sp/showrestaurant/check/
+// @name        check_showrestaurant-tokyodisneyresort.jp
 // @namespace   東京ディズニーリゾートのショーレストランの空きを繰り返しチェックし、空いていたら予約ボダンを押下する。
 // @match       https://reserve.tokyodisneyresort.jp/sp/showrestaurant/check/
 // @grant       GM.xmlHttpRequest
