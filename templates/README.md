@@ -44,12 +44,7 @@ async function exec_workflow() {
 
 必要な機能に応じて、`patterns/`ディレクトリから関数をコピーして使用してください。
 
-#### LINE通知の追加
-```javascript
-// @grant GM.xmlHttpRequest をヘッダーに追加
-// patterns/line-notification.js から関数をコピー
-await sendLineNotification('処理が完了しました');
-```
+
 
 #### 要素待機の活用
 ```javascript
