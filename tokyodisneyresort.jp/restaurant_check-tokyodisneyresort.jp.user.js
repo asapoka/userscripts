@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        restaurant_check- tokyodisneyresort.jp
 // @namespace   東京ディズニーリゾートのレストランの空きを繰り返しチェックし、空いていたら予約ボダンを押下する。
-// @match       https://reserve.tokyodisneyresort.jp/sp/restaurant/check/
+// @match       https://reserve.tokyodisneyresort.jp/sp/restaurant/check/*
 // @grant       GM.xmlHttpRequest
 // @version     1.0
 // @author      asapoka
@@ -16,21 +16,46 @@ var useDate = location.href.match(/\d{8}/);
 
 // LINE通知送信
 function lineNotification(msg) {
-  // LINE通知メッセージ
-  let params = new URLSearchParams({
-    message: msg,
-  });
-  console.log("notification!");
+  // セキュアな情報を変数に格納
+  const LINE_API_URL = "https://api.line.me/v2/bot/message/push";
+  const LINE_ACCESS_TOKEN = "YOUR_ACCESS_TOKEN_HERE"; // サンプル値に置き換え
+  const LINE_TO_ID = "YOUR_TO_ID_HERE"; // サンプル値に置き換え
+
+  // メッセージデータ
+  const data = {
+    to: LINE_TO_ID,
+    messages: [
+      {
+        type: "text",
+        text: msg,
+      },
+    ],
+  };
+
+  // ヘッダー情報
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${LINE_ACCESS_TOKEN}`,
+  };
+
+  // 送信内容をダンプ
+  console.log("Sending notification via Messaging API!");
+  console.log("URL:", LINE_API_URL);
+  console.log("Headers:", headers);
+  console.log("Data:", data);
+
   GM.xmlHttpRequest({
     method: "POST",
-    url: "https://notify-api.line.me/api/notify",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer ${YOUR TOKEN}",
-    },
-    data: params.toString(),
+    url: LINE_API_URL,
+    headers: headers,
+    data: JSON.stringify(data),
     onload: function (response) {
-      console.log(response.responseText);
+      console.log("Response:", response.responseText);
+    },
+    onerror: function (error) {
+      console.error("Error occurred:", error);
+      console.error("Status:", error.status);
+      console.error("Response Text:", error.responseText);
     },
   });
 }
