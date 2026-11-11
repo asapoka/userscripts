@@ -11,8 +11,8 @@
 let v1 = 0;
 const checkQueue = async function () {
   t = setInterval(function () {
-    if ($("#buttonConfirmRedirect:visible:first").length > 0) {
-      $("#buttonConfirmRedirect:visible:first").click();
+    if (document.querySelector("#buttonConfirmRedirect:visible:first")) {
+      document.querySelector("#buttonConfirmRedirect:visible:first").click();
       console.log("すすむボタン押下");
       clearInterval(t);
     }
@@ -23,8 +23,8 @@ const checkQueue = async function () {
 
 const checkQueueAgain = async function () {
   t = setInterval(function () {
-    if ($(".l").text() == "もう一度並ぶ") {
-      location.href = $("a.btn").attr("href");
+    if (document.querySelector(".l").textContent == "もう一度並ぶ") {
+      location.href = document.querySelector("a.btn").getAttribute("href");
       console.log("もう一度並ぶ押下");
       clearInterval(t);
     }
