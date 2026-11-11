@@ -16,22 +16,49 @@
 var useDate = location.href.match(/\d{8}/);
 
 // LINE通知送信
+// LINE通知送信
 function lineNotification(msg) {
-  // LINE通知メッセージ
-  let params = new URLSearchParams({
-    message: msg,
-  });
-  console.log("notification!");
+  // LINE Messaging APIのエンドポイント
+  const url = "https://api.line.me/v2/bot/message/push";
+
+  // 送信先ユーザーIDまたはグループID
+  const to = "${YOUR_USER_ID}"; // ここに送信先IDを設定してください
+
+  // メッセージデータ
+  const data = {
+    to: to,
+    messages: [
+      {
+        type: "text",
+        text: msg,
+      },
+    ],
+  };
+
+  // ヘッダー情報
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + "${YOUR TOKEN}", // チャネルアクセストークンを設定してください
+  };
+
+  // 送信内容をダンプ
+  console.log("Sending notification via Messaging API!");
+  console.log("URL:", url);
+  console.log("Headers:", headers);
+  console.log("Data:", data);
+
   GM.xmlHttpRequest({
     method: "POST",
-    url: "https://notify-api.line.me/api/notify",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Bearer ${YOUR TOKEN}",
-    },
-    data: params.toString(),
+    url: url,
+    headers: headers,
+    data: JSON.stringify(data),
     onload: function (response) {
-      console.log(response.responseText);
+      console.log("Response:", response.responseText);
+    },
+    onerror: function (error) {
+      console.error("Error occurred:", error);
+      console.error("Status:", error.status);
+      console.error("Response Text:", error.responseText);
     },
   });
 }
@@ -90,17 +117,37 @@ function show_room_info(hotel) {
         // ベッドセクション名を取得
 
         if ($(bedSection).first(".js-reserve.button.next").is(":visible")) {
-          rooms.push(new Room(getHotelName(hotel), getHotelRoomTypeName(roomType), getRoomSectionName(roomSection), getBedSectionName(bedSection), getPrice(bedSection)));
+          rooms.push(
+            new Room(
+              getHotelName(hotel),
+              getHotelRoomTypeName(roomType),
+              getRoomSectionName(roomSection),
+              getBedSectionName(bedSection),
+              getPrice(bedSection),
+            ),
+          );
 
           sectionName = getRoomSectionName(roomSection);
           // 予約したいホテルのキーワード
-          if (sectionName.match("ファンタジーシャトー")) {
+          if (sectionName.match("ハーバーグランド")) {
+            // 予約手続きボタンをクリック
+            if (
+              $(bedSection)
+                .find(
+                  ".js-reserve.button.next:visible:not(.js-callVacancyStatusSearch)",
+                )
+                .first().length > 0
+            ) {
             clickFlag = true;
             lineNotification(sectionName);
             document.title = useDate + "★★★★★★★★★";
-            // 予約手続きボタンをクリック
-            $(bedSection).first(".js-reserve.button.next:visible").click();
-            $(".js-reserve.button.next:visible").click();
+              $(bedSection)
+                .find(
+                  ".js-reserve.button.next:visible:not(.js-callVacancyStatusSearch)",
+                )
+                .first()
+                .click();
+            }
           }
         }
       });
