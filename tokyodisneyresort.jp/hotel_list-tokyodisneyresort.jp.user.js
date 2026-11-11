@@ -16,7 +16,6 @@
 var useDate = location.href.match(/\d{8}/);
 
 // LINE通知送信
-// LINE通知送信
 function lineNotification(msg) {
   // LINE Messaging APIのエンドポイント
   const url = "https://api.line.me/v2/bot/message/push";
@@ -92,11 +91,11 @@ const f1 = async function () {
   fsh = $(".js-hotelDiv.FSH.boxHotel04.js-accordion");
 
   //show_room_info(disneyland);
-  //show_room_info(miracosta);
+  show_room_info(miracosta);
   //show_room_info(ambassador);
   //show_room_info(tsh);
   //show_room_info(celebration);
-  show_room_info(fsh);
+  // show_room_info(fsh);
 };
 // ホテルから部屋タイプを表示する
 function show_room_info(hotel) {
@@ -128,8 +127,6 @@ function show_room_info(hotel) {
           );
 
           sectionName = getRoomSectionName(roomSection);
-          // 予約したいホテルのキーワード
-          if (sectionName.match("ハーバーグランド")) {
             // 予約手続きボタンをクリック
             if (
               $(bedSection)
@@ -147,7 +144,6 @@ function show_room_info(hotel) {
                 )
                 .first()
                 .click();
-            }
           }
         }
       });
@@ -199,7 +195,13 @@ function getBedSectionName(bedSection) {
 function getPrice(bedSection) {
   return $($(bedSection).find(".price")[0]).text();
 }
-function Room(hotelName, roomTypeName, roomSectionTypeName, bedSectionTypeName, price) {
+function Room(
+  hotelName,
+  roomTypeName,
+  roomSectionTypeName,
+  bedSectionTypeName,
+  price,
+) {
   this.hotelName = hotelName;
   this.roomTypeName = roomTypeName;
   this.roomSectionTypeName = roomSectionTypeName;
@@ -210,7 +212,10 @@ function Room(hotelName, roomTypeName, roomSectionTypeName, bedSectionTypeName, 
 const wait_loading = async function () {
   t = setInterval(function () {
     document.title = useDate + ":読込中...";
-    if ($(".ui-mobile.ui-loading").length == 0 && $(".ui-mobile.ui-mobile-rendering").length == 0) {
+    if (
+      $(".ui-mobile.ui-loading").length == 0 &&
+      $(".ui-mobile.ui-mobile-rendering").length == 0
+    ) {
       // 監視中断
       clearInterval(t);
       f1();
